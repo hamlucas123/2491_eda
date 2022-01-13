@@ -39,7 +39,16 @@ summarise_at(Gestation,
 
 # make a new data frame containing only id, age and race variables
 
+df <- select(Gestation,
+             ID = id,
+             Age = age,
+             Race = race)
+
 # calculate the mean age by race
+
+summarise_at(group_by(df, Race),
+             .vars = vars(Age),
+             .funs = list(mean = mean), na.rm = T)
 
 
 # Activity 4 - Extensions
