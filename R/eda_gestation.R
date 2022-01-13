@@ -30,10 +30,10 @@ Gestation_n_race_ed <- count(Gestation, race, ed)
 # ensure you use a human friendly name for the value you're creating
 
 # calculate both mothers' mean age and babies' mean weight
-summarise(Gestation, 
-          `Mean age` = ...,
-          `Mean wt`  = ...)
 
+summarise_at(Gestation,
+             .vars = vars(`Mean wt` = wt, `Mean age` = age),
+             .funs = mean, na.rm = T)
 
 # Activity 3 - Grouped summaries
 
